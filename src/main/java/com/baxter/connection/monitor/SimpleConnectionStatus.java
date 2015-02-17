@@ -9,17 +9,17 @@
 package com.baxter.connection.monitor;
 
 /**
- * TODO always put the javadoc for API public elements.
+ * Simple implementation of the connection status 
  * @author bela
  * @sinceDevelopmentVersion
  */
-public class SimpleConnectionStatus implements ConnectionStatus
+public class SimpleConnectionStatus<T> implements ConnectionStatus<T>, ConnectionStatusModifier<T>
 {
-  private final String name; // TODO make immutable where possible
+  private final String name;
 
-  private boolean status;
+  private T status;
 
-  public SimpleConnectionStatus(final String name, final boolean status)
+  public SimpleConnectionStatus(final String name, final T status)
   {
 	this.name = name;
 	this.status = status;
@@ -32,13 +32,13 @@ public class SimpleConnectionStatus implements ConnectionStatus
   }
 
   @Override
-  public boolean isStatus()
+  public T getStatus()
   {
 	return status;
   }
 
-  // TODO Really public? are you going to subclass? 
-  public void setStatus(boolean status)
+  @Override
+  public void setStatus(T status)
   {
 	this.status = status;
   }
@@ -46,9 +46,7 @@ public class SimpleConnectionStatus implements ConnectionStatus
   @Override
   public String toString()
   {
-	// TODO this is very archaic representation, the modern way would be
-	// 'Connection <name> is on' or 'Connection <name> is dead' 
-	return String.format("ConnectionStatus [name=%1$s, status=%2$s]", name, status);
+	return String.format("Connection %1$s is %2$s]", name, status);
   }
 
 }
