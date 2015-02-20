@@ -9,23 +9,12 @@
 package com.baxter.connection.monitor;
 
 /**
- * Get information about the status of connection.
+ * Default implementation of Status. It contains the types of status.
  * 
  * @author bela
  * @sinceDevelopmentVersion
  */
-public interface ConnectionStatus<T>
+public enum SimpleStatus implements Status
 {
-  /**
-   * Returns the connection name.
-   * @return connection name
-   */
-  String getName();
-
-  /**
-   * Determines the status of this connection.
-   * @return connection status
-   */
-  T getStatus();
-
+  connected, unstable, disconnected
 }

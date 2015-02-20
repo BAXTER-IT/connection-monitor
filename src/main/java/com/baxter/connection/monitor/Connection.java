@@ -9,17 +9,25 @@
 package com.baxter.connection.monitor;
 
 /**
- * Change the status of the connection.
+ * The user gets information about the connection.
+ * 
+ * The <tt>Connection</tt> interface provides two methods for connection details.
  * 
  * @author bela
  * @sinceDevelopmentVersion
  */
-public interface ConnectionStatusModifier<T>
+public interface Connection
 {
+  /**
+   * Returns the name of connection.
+   * @return connection name
+   */
+  String getName();
 
   /**
-   * Modify the status of this connection.
-   * @param connection status
+   * Determines the status of connection.
+   * @return connection status
    */
-  void setStatus(T status);
+  Status getStatus();
+
 }

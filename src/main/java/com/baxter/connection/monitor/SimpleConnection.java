@@ -8,18 +8,22 @@
  */
 package com.baxter.connection.monitor;
 
+import java.io.Serializable;
+
 /**
- * Simple implementation of the connection status 
+ * Simple implementation of the connection 
  * @author bela
  * @sinceDevelopmentVersion
  */
-public class SimpleConnectionStatus<T> implements ConnectionStatus<T>, ConnectionStatusModifier<T>
+public class SimpleConnection implements Connection, Serializable
 {
+  private static final long serialVersionUID = 20150220102230L;
+
   private final String name;
 
-  private T status;
+  private Status status;
 
-  public SimpleConnectionStatus(final String name, final T status)
+  public SimpleConnection(final String name, final Status status)
   {
 	this.name = name;
 	this.status = status;
@@ -32,13 +36,12 @@ public class SimpleConnectionStatus<T> implements ConnectionStatus<T>, Connectio
   }
 
   @Override
-  public T getStatus()
+  public Status getStatus()
   {
 	return status;
   }
 
-  @Override
-  public void setStatus(T status)
+  public void setStatus(Status status)
   {
 	this.status = status;
   }

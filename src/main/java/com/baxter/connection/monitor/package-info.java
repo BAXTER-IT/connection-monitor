@@ -7,6 +7,7 @@
  * code from elsewhere please immediately inform Franck.
  */
 /**
- * Some package javadoc here.
+ * Connection monitor package.
  */
 package com.baxter.connection.monitor;
+
