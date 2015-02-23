@@ -11,7 +11,7 @@ package com.baxter.connection.monitor;
 import java.io.Serializable;
 
 /**
- * Simple implementation of the connection 
+ * Simple implementation of the connection.
  * @author bela
  * @sinceDevelopmentVersion
  */
@@ -41,7 +41,7 @@ public class SimpleConnection implements Connection, Serializable
 	return status;
   }
 
-  public void setStatus(Status status)
+  public void setStatus(final Status status)
   {
 	this.status = status;
   }
