@@ -7,6 +7,8 @@
  */
 package com.baxter.connection.monitor;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -32,6 +34,7 @@ public class AlternativeConnectionTest
   @Test
   public void testRandomStatus()
   {
+	final AtomicInteger externalCriteria = new AtomicInteger(20);
 	final Connection conn = new Connection()
 	{
 	  @Override
@@ -43,26 +46,20 @@ public class AlternativeConnectionTest
 	  @Override
 	  public Status getStatus()
 	  {
-		return System.currentTimeMillis() % 2 == 0 ? new Status()
+		return new Status()
 		{
 		  @Override
 		  public String toString()
 		  {
-			return "odd";
-		  }
-		} : new Status()
-		{
-		  @Override
-		  public String toString()
-		  {
-			return "even";
+			return "Status now " + externalCriteria.get();
 		  }
 		};
 	  }
 	};
-	for (int i = 0; i < 10; i++)
-	{
-	  System.out.println(conn.getStatus());
-	}
+	externalCriteria.set(50);
+	Assert.assertEquals("Status now 50", conn.getStatus().toString());
+	Assert.assertEquals("Status now 50", conn.getStatus().toString());
+	externalCriteria.set(40);
+	Assert.assertEquals("Status now 40", conn.getStatus().toString());
   }
 }
