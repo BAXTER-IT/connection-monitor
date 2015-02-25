@@ -9,9 +9,9 @@ package com.baxter.connection.monitor;
 
 /**
  * The user gets information about the connection.
- * 
+ *
  * The <tt>Connection</tt> interface provides two methods for connection details.
- * 
+ *
  * @author bela
  * @since 1.0
  */

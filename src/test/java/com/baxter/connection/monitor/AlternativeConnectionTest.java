@@ -55,6 +55,7 @@ public class AlternativeConnectionTest
 		  }
 		};
 	  }
+
 	};
 	externalCriteria.set(50);
 	Assert.assertEquals("Status now 50", conn.getStatus().toString());

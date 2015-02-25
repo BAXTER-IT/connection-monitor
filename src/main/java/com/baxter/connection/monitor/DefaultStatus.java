@@ -13,7 +13,7 @@ package com.baxter.connection.monitor;
  * @author bela
  * @since 1.0
  */
-public enum SimpleStatus implements Status
+public enum DefaultStatus implements Status
 {
   connected, unstable, disconnected
 }

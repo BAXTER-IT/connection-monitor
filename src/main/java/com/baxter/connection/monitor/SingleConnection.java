@@ -14,15 +14,14 @@ import java.io.Serializable;
  * @author bela
  * @since 1.0
  */
-public class SimpleConnection implements Connection, Serializable
+public class SingleConnection implements SingleConnectionMXBean, Serializable
 {
   private static final long serialVersionUID = 1L;
 
   private final String name;
-
   private Status status;
 
-  public SimpleConnection(final String name, final Status status)
+  public SingleConnection(final String name, final Status status)
   {
 	this.name = name;
 	this.status = status;
