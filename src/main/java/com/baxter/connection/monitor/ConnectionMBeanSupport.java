@@ -10,17 +10,22 @@ import javax.management.ObjectName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO can I instantiate and use this class?
 public class ConnectionMBeanSupport extends NotificationBroadcasterSupport
 {
+  //TODO using a concrete class here eliminates the possibility for subclasses to be identified
   protected static Logger logger = LoggerFactory.getLogger(ConnectionMBeanSupport.class);
+  
   private final String mbeanName;
 
+  // TODO final modifier for parameters - everywhere!
   public ConnectionMBeanSupport(String mbeanName)
   {
 	super();
 	this.mbeanName = mbeanName;
   }
 
+  // TODO no lava code! do not commit this.
   //  @Override
   //  public javax.management.MBeanNotificationInfo[] getNotificationInfo()
   //  {
@@ -32,10 +37,12 @@ public class ConnectionMBeanSupport extends NotificationBroadcasterSupport
   //	return new MBeanNotificationInfo[] { info };
   //  }
 
+  // TODO who is a client of this method? why is it public and why is it static?
   public static void registerMBean(Object object, String mbeanName)
   {
 	try
 	{
+	  // TODO use final modifier where possible - always!
 	  MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
 	  ObjectName objectName = new ObjectName(mbeanName);
 	  unregisterMBean(mbeanName);
@@ -45,7 +52,7 @@ public class ConnectionMBeanSupport extends NotificationBroadcasterSupport
 	catch (Exception e)
 	{
 	  logger.error("Error while registering JMX agent!", e);
-	  e.printStackTrace();
+	  e.printStackTrace(); // TODO why polluting the output? isn't logger enough?
 	}
   }
 
@@ -68,11 +75,13 @@ public class ConnectionMBeanSupport extends NotificationBroadcasterSupport
 	}
   }
 
+  // TODO what is a purpose of this method in this class?
   public long getTimeStamp()
   {
 	return System.currentTimeMillis();
   }
 
+  // TODO what is this methid for?
   public void sendAttributeChangeNotification(Class<?> c, String attributeName, Object oldValue, Object newValue)
   {
   }

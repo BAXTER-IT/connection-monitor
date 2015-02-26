@@ -9,6 +9,7 @@ public class ConnectionNotification extends Notification
   private static final long serialVersionUID = 1L;
   private Connection connection;
 
+  // TODO do you use this constructor? do you need it at all?
   public ConnectionNotification(Object source, long sequenceNumber, long timeStamp, String message, Connection connection)
   {
 	super(CONNECTION_STATUS, source, sequenceNumber, timeStamp, message);
