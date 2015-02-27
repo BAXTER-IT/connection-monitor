@@ -44,16 +44,17 @@ public class AlternativeConnectionTest
 	  }
 
 	  @Override
-	  public Status getStatus()
+	  public SimpleStatus getStatus()
 	  {
-		return new Status()
-		{
-		  @Override
-		  public String toString()
-		  {
-			return "Status now " + externalCriteria.get();
-		  }
-		};
+		return SimpleStatus.connected;
+		//		return new Status()
+		//		{
+		//		  @Override
+		//		  public String toString()
+		//		  {
+		//			return "Status now " + externalCriteria.get();
+		//		  }
+		//		};
 	  }
 
 	};

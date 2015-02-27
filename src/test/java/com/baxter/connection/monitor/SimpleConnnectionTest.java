@@ -17,11 +17,11 @@ public class SimpleConnnectionTest
   public void testGetStatus()
   {
 	String conn = "testConnection";
-	SingleConnection connection = new SingleConnection(conn, DefaultStatus.disconnected);
+	SimpleConnection connection = new SimpleConnection(conn, SimpleStatus.disconnected);
 	Assert.assertEquals(conn, connection.getName());
-	Assert.assertEquals(DefaultStatus.disconnected, connection.getStatus());
-	connection.setStatus(DefaultStatus.connected);
-	Assert.assertEquals(DefaultStatus.connected, connection.getStatus());
+	Assert.assertEquals(SimpleStatus.disconnected, connection.getStatus());
+	connection.setStatus(SimpleStatus.connected);
+	Assert.assertEquals(SimpleStatus.connected, connection.getStatus());
   }
 
 }

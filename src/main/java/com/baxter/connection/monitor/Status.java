@@ -7,13 +7,15 @@
  */
 package com.baxter.connection.monitor;
 
+import java.io.Serializable;
+
 /**
  * Common interface for connection status implementations.
  * 
  * @author bela
  * @since 1.0
  */
-public interface Status
+public interface Status extends Serializable
 {
 
 }

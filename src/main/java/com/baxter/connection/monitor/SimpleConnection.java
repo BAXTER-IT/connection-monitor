@@ -14,14 +14,14 @@ import java.io.Serializable;
  * @author bela
  * @since 1.0
  */
-public class SingleConnection implements SingleConnectionMXBean, Serializable
+public class SimpleConnection implements Connection, Serializable
 {
   private static final long serialVersionUID = 1L;
 
   private final String name;
-  private Status status;
+  private SimpleStatus status;
 
-  public SingleConnection(final String name, final Status status)
+  public SimpleConnection(final String name, final SimpleStatus status)
   {
 	this.name = name;
 	this.status = status;
@@ -34,12 +34,12 @@ public class SingleConnection implements SingleConnectionMXBean, Serializable
   }
 
   @Override
-  public Status getStatus()
+  public SimpleStatus getStatus()
   {
 	return status;
   }
 
-  public void setStatus(final Status status)
+  public void setStatus(final SimpleStatus status)
   {
 	this.status = status;
   }

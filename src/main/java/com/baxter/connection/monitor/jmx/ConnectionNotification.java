@@ -1,13 +1,15 @@
-package com.baxter.connection.monitor;
+package com.baxter.connection.monitor.jmx;
 
 import javax.management.Notification;
+
+import com.baxter.connection.monitor.Connection;
 
 public class ConnectionNotification extends Notification
 {
 
-  public static final String CONNECTION_STATUS = "jmx.connection";
+  private static final String CONNECTION_STATUS = "jmx.connection";
   private static final long serialVersionUID = 1L;
-  private Connection connection;
+  private final Connection connection;
 
   // TODO do you use this constructor? do you need it at all?
   public ConnectionNotification(Object source, long sequenceNumber, long timeStamp, String message, Connection connection)
@@ -22,13 +24,13 @@ public class ConnectionNotification extends Notification
 	this.connection = connection;
   }
 
-  public ConnectionNotification(Object source, long sequenceNumber, String message, Connection connection)
+  ConnectionNotification(Object source, long sequenceNumber, String message, Connection connection)
   {
 	super(CONNECTION_STATUS, source, sequenceNumber, message);
 	this.connection = connection;
   }
 
-  public ConnectionNotification(Object source, long sequenceNumber, Connection connection)
+  ConnectionNotification(Object source, long sequenceNumber, Connection connection)
   {
 	super(CONNECTION_STATUS, source, sequenceNumber);
 	this.connection = connection;
@@ -37,11 +39,6 @@ public class ConnectionNotification extends Notification
   public Connection getConnection()
   {
 	return connection;
-  }
-
-  public void setConnection(Connection connection)
-  {
-	this.connection = connection;
   }
 
   @Override
