@@ -3,7 +3,6 @@ package com.baxter.connection.monitor.jmx.mbean;
 import java.lang.management.ManagementFactory;
 import java.util.concurrent.atomic.AtomicLong;
 
-import javax.management.AttributeChangeNotification;
 import javax.management.MBeanServer;
 import javax.management.Notification;
 import javax.management.NotificationBroadcasterSupport;
@@ -13,8 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baxter.connection.monitor.Connection;
+import com.baxter.connection.monitor.Status;
 import com.baxter.connection.monitor.jmx.ConnectionMonitorMXBean;
 import com.baxter.connection.monitor.jmx.ConnectionMonitorName;
+import com.baxter.connection.monitor.jmx.ConnectionStatusNotification;
 
 /**
  * This is an abstract base implementation for a Connection MBean. The system
@@ -37,7 +38,10 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
 
   private final C connection;
 
-  protected final AtomicLong sequenceNumber = new AtomicLong(0);
+  /** 
+   * A sequence number for notifications.
+   */
+  private final AtomicLong sequenceNumber = new AtomicLong(0);
 
   /**
    * Creates the mbean instance. The object name is constructed based on passed parameters.
@@ -54,6 +58,13 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
   public String getConnectionName()
   {
 	return this.connection.getName();
+  }
+
+  @Override
+  public String getConnectionStatus()
+  {
+	final Status status = this.connection.getStatus();
+	return status == null ? null : status.toString();
   }
 
   protected C getConnection()
@@ -96,12 +107,18 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
 	}
   }
 
-  public void sendAttributeChangeNotification(Class<?> c, String attributeName, Object oldValue, Object newValue)
+  /**
+   * Fires the ConnectionStatusNotification to the listeners. Should be called by a monitor concrete implementation class when the status 
+   * of underlying connection has changed.
+   * @param newStatus
+   */
+  protected void fireConnectionStatusChanged(final Status newStatus)
   {
-	Notification notification = new AttributeChangeNotification(this, sequenceNumber.incrementAndGet(),
-	    System.currentTimeMillis(), attributeName + " has been changed from " + oldValue + " to " + newValue, attributeName,
-	    c.getName(), oldValue, newValue);
-	sendNotification(notification);
-	logger.debug("Send an AttributeChangeNotification {}", notification);
+	final long seq = sequenceNumber.incrementAndGet();
+	final long time = System.currentTimeMillis();
+	final Notification n = new ConnectionStatusNotification(name, seq, time, newStatus);
+	logger.debug("About to send a notification {}", n);
+	sendNotification(n);
   }
+
 }
