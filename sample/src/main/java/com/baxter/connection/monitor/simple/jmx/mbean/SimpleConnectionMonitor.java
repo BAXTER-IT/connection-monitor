@@ -3,7 +3,7 @@ package com.baxter.connection.monitor.simple.jmx.mbean;
 import javax.management.Notification;
 
 import com.baxter.connection.monitor.jmx.ConnectionNotification;
-import com.baxter.connection.monitor.jmx.mbean.AbstractConnectionMBean;
+import com.baxter.connection.monitor.jmx.mbean.AbstractConnectionMonitor;
 import com.baxter.connection.monitor.simple.SimpleConnection;
 import com.baxter.connection.monitor.simple.SimpleStatus;
 import com.baxter.connection.monitor.simple.jmx.SimpleConnectionMXBean;
@@ -13,34 +13,31 @@ import com.baxter.connection.monitor.simple.jmx.SimpleConnectionMXBean;
  * @author xpdev
  *
  */
-public class SimpleConnectionMBeanSupport extends AbstractConnectionMBean implements SimpleConnectionMXBean
+public class SimpleConnectionMonitor extends AbstractConnectionMonitor<SimpleConnection> implements SimpleConnectionMXBean
 {
 
-  SimpleConnection connection;
-
-  public SimpleConnectionMBeanSupport(SimpleConnection connection)
+  public SimpleConnectionMonitor(final SimpleConnection connection)
   {
-	super(connection.getName());
-	this.connection = connection;
+	super(connection);
   }
 
   @Override
-  public String getConnectionName()
+  public String getMonitorType()
   {
-	return connection.getName();
+	return "simple";
   }
 
   @Override
   public SimpleStatus getConnectionStatus()
   {
-	return connection.getStatus();
+	return getConnection().getStatus();
   }
 
   public void setConnectionStatus(final SimpleStatus status)
   {
-	connection.setStatus(status);
+	getConnection().setStatus(status);
 	Notification notification = new ConnectionNotification(this, sequenceNumber.incrementAndGet(), System.currentTimeMillis(),
-	    connection);
+	    getConnection());
 	sendNotification(notification);
 	logger.debug("Send a connection status {}", notification);
   }

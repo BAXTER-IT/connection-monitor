@@ -1,6 +1,6 @@
 package com.baxter.connection.monitor.simple.jmx;
 
-import com.baxter.connection.monitor.jmx.ConnectionMXBean;
+import com.baxter.connection.monitor.jmx.ConnectionMonitorMXBean;
 import com.baxter.connection.monitor.simple.SimpleStatus;
 
 /**
@@ -8,7 +8,7 @@ import com.baxter.connection.monitor.simple.SimpleStatus;
  * @author Goszi, Bela
  *
  */
-public interface SimpleConnectionMXBean extends ConnectionMXBean
+public interface SimpleConnectionMXBean extends ConnectionMonitorMXBean
 {
 
   SimpleStatus getConnectionStatus();
