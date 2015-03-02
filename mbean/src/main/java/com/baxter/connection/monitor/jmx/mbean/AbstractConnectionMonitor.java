@@ -23,9 +23,8 @@ import com.baxter.connection.monitor.jmx.ConnectionStatusNotification;
  * differ to each other by means of names or types .....
  * 
  * @author xpdev
- * @param <C> a concrete connection type for this monitor
  */
-public abstract class AbstractConnectionMonitor<C extends Connection> extends NotificationBroadcasterSupport implements
+public abstract class AbstractConnectionMonitor extends NotificationBroadcasterSupport implements
     ConnectionMonitorMXBean
 {
 
@@ -36,7 +35,7 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
    */
   private final ObjectName name;
 
-  private final C connection;
+  private final Connection connection;
 
   /** 
    * A sequence number for notifications.
@@ -48,7 +47,7 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
    * @param connection the connection to monitor
    * @throws IllegalArgumentException if type or  name are illegal for JMX ObjectName
    */
-  protected AbstractConnectionMonitor(final C connection)
+  protected AbstractConnectionMonitor(final Connection connection)
   {
 	this.connection = connection;
 	this.name = ConnectionMonitorName.getInstance(getMonitorType(), connection.getName());
@@ -67,7 +66,7 @@ public abstract class AbstractConnectionMonitor<C extends Connection> extends No
 	return status == null ? null : status.toString();
   }
 
-  protected C getConnection()
+  protected Connection getConnection()
   {
 	return this.connection;
   }

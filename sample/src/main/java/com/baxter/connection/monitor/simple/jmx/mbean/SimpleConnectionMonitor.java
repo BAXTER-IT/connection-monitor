@@ -10,7 +10,7 @@ import com.baxter.connection.monitor.simple.SimpleStatus;
  * @author xpdev
  *
  */
-public class SimpleConnectionMonitor extends AbstractConnectionMonitor<SimpleConnection> implements ConnectionMonitorMXBean
+public class SimpleConnectionMonitor extends AbstractConnectionMonitor implements ConnectionMonitorMXBean
 {
 
   public SimpleConnectionMonitor(final SimpleConnection connection)
@@ -26,7 +26,7 @@ public class SimpleConnectionMonitor extends AbstractConnectionMonitor<SimpleCon
 
   public void setConnectionStatus(final SimpleStatus status)
   {
-	getConnection().setStatus(status);
+	((SimpleConnection) getConnection()).setStatus(status);
 	fireConnectionStatusChanged(status);
   }
 
