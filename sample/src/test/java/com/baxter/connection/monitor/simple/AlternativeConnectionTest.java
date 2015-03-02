@@ -5,13 +5,16 @@
  * and should remain that way. If you got this source
  * code from elsewhere please immediately inform Franck.
  */
-package com.baxter.connection.monitor;
+package com.baxter.connection.monitor.simple;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import com.baxter.connection.monitor.Connection;
+import com.baxter.connection.monitor.Status;
 
 public class AlternativeConnectionTest
 {
@@ -44,17 +47,17 @@ public class AlternativeConnectionTest
 	  }
 
 	  @Override
-	  public SimpleStatus getStatus()
+	  public Status getStatus()
 	  {
-		return SimpleStatus.connected;
-		//		return new Status()
-		//		{
-		//		  @Override
-		//		  public String toString()
-		//		  {
-		//			return "Status now " + externalCriteria.get();
-		//		  }
-		//		};
+//		return SimpleStatus.connected;
+				return new Status()
+				{
+				  @Override
+				  public String toString()
+				  {
+					return "Status now " + externalCriteria.get();
+				  }
+				};
 	  }
 
 	};

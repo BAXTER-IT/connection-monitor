@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.baxter.connection</groupId>
+    <artifactId>connection-monitor</artifactId>
+    <version>1.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>connection-monitor-mbean</artifactId>
+
+  <name>Baxter Connection Monitor MBean</name>
+  <description>Abstract MBean implementation for Connection Monitor.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>connection-monitor-client</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

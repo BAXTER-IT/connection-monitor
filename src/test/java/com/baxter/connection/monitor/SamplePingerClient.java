@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baxter.connection.monitor;
+package com.baxter.connection.monitor.simple.sample;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,8 +13,8 @@ import javax.management.Notification;
 import javax.management.NotificationListener;
 
 import com.baxter.connection.monitor.jmx.ConnectionNotification;
-import com.baxter.connection.monitor.jmx.SimpleConnectionMXBean;
-import com.baxter.connection.monitor.jmx.client.JMXConnectionMonitor;
+import com.baxter.connection.monitor.simple.jmx.SimpleConnectionMXBean;
+import com.baxter.connection.monitor.simple.jmx.client.JMXConnectionMonitor;
 
 /**
  * Sample client for JMX connection monitor

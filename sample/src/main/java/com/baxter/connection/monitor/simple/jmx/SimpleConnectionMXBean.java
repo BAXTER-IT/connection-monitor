@@ -1,6 +1,7 @@
-package com.baxter.connection.monitor.jmx;
+package com.baxter.connection.monitor.simple.jmx;
 
-import com.baxter.connection.monitor.SimpleStatus;
+import com.baxter.connection.monitor.jmx.ConnectionMXBean;
+import com.baxter.connection.monitor.simple.SimpleStatus;
 
 /**
  * A simple MBean for connection status. 

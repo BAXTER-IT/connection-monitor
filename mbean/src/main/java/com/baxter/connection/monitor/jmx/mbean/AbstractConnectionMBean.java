@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
 import com.baxter.connection.monitor.jmx.ConnectionMXBean;
 
 /**
- * This is an abstract base implemenmtation for a Connection MBean. The system
- * may have multiple Connection MBeans registerdd at the same time, all those
+ * This is an abstract base implementation for a Connection MBean. The system
+ * may have multiple Connection MBeans registered at the same time, all those
  * differ to each other by means of names or types .....
  * 
  * @author xpdev

@@ -1,4 +1,4 @@
-package com.baxter.connection.monitor.jmx.client;
+package com.baxter.connection.monitor.simple.jmx.client;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baxter.connection.monitor.jmx.ConnectionMXBean;
-import com.baxter.connection.monitor.jmx.SimpleConnectionMXBean;
+import com.baxter.connection.monitor.simple.jmx.SimpleConnectionMXBean;
 import com.sun.jmx.remote.util.EnvHelp;
 
 public class JMXConnectionMonitor

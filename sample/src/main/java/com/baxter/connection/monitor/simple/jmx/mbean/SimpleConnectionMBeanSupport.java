@@ -1,11 +1,12 @@
-package com.baxter.connection.monitor.jmx.mbean;
+package com.baxter.connection.monitor.simple.jmx.mbean;
 
 import javax.management.Notification;
 
-import com.baxter.connection.monitor.SimpleConnection;
-import com.baxter.connection.monitor.SimpleStatus;
 import com.baxter.connection.monitor.jmx.ConnectionNotification;
-import com.baxter.connection.monitor.jmx.SimpleConnectionMXBean;
+import com.baxter.connection.monitor.jmx.mbean.AbstractConnectionMBean;
+import com.baxter.connection.monitor.simple.SimpleConnection;
+import com.baxter.connection.monitor.simple.SimpleStatus;
+import com.baxter.connection.monitor.simple.jmx.SimpleConnectionMXBean;
 
 /**
  * 

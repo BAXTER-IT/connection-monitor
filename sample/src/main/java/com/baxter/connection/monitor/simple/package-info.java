@@ -5,15 +5,5 @@
  * and should remain that way. If you got this source
  * code from elsewhere please immediately inform Franck.
  */
-package com.baxter.connection.monitor;
+package com.baxter.connection.monitor.simple;
 
-/**
- * Default implementation of Status. It contains the types of status.
- * 
- * @author bela
- * @since 1.0
- */
-public enum SimpleStatus implements Status
-{
-  connected, unstable, disconnected
-}

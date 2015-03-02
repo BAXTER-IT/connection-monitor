@@ -1,15 +1,15 @@
 /**
  * 
  */
-package com.baxter.connection.monitor;
+package com.baxter.connection.monitor.simple.sample;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Timer;
 
-import com.baxter.connection.monitor.jmx.mbean.SimpleConnectionMBeanSupport;
-import com.baxter.connection.monitor.tcp.Host;
-import com.baxter.connection.monitor.tcp.PingerTimerTask;
+import com.baxter.connection.monitor.simple.SimpleConnection;
+import com.baxter.connection.monitor.simple.SimpleStatus;
+import com.baxter.connection.monitor.simple.jmx.mbean.SimpleConnectionMBeanSupport;
 
 /**
  * @author xpdev
