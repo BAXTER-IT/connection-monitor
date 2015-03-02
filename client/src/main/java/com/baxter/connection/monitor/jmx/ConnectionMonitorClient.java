@@ -48,7 +48,7 @@ public class ConnectionMonitorClient
   }
 
   /**
-   * TODO
+   * Adds a notification listener for specific monitor.
    * @param connectionName
    * @param listener
    * @throws IOException
@@ -64,7 +64,7 @@ public class ConnectionMonitorClient
   }
 
   /**
-   * TODO
+   * Adds notification listener for all connection monitors.
    * @param listener
    * @throws IOException
    * @throws MalformedObjectNameException
