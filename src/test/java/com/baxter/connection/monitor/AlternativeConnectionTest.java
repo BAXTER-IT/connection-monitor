@@ -43,18 +43,18 @@ public class AlternativeConnectionTest
 		return "random";
 	  }
 
+	  @SuppressWarnings("serial")
 	  @Override
-	  public SimpleStatus getStatus()
+	  public Status getStatus()
 	  {
-		return SimpleStatus.connected;
-		//		return new Status()
-		//		{
-		//		  @Override
-		//		  public String toString()
-		//		  {
-		//			return "Status now " + externalCriteria.get();
-		//		  }
-		//		};
+		return new Status()
+		{
+		  @Override
+		  public String toString()
+		  {
+			return "Status now " + externalCriteria.get();
+		  }
+		};
 	  }
 
 	};
