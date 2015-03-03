@@ -1,9 +1,12 @@
 package com.baxter.connection.monitor.simple.jmx.mbean;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import com.baxter.connection.monitor.Status;
 import com.baxter.connection.monitor.jmx.ConnectionMonitorMXBean;
 import com.baxter.connection.monitor.jmx.mbean.AbstractConnectionMonitor;
 import com.baxter.connection.monitor.simple.SimpleConnection;
-import com.baxter.connection.monitor.simple.SimpleStatus;
 
 /**
  * 
@@ -16,6 +19,7 @@ public class SimpleConnectionMonitor extends AbstractConnectionMonitor implement
   public SimpleConnectionMonitor(final SimpleConnection connection)
   {
 	super(connection);
+	connection.addObserver(new SimpleConnectionObserver());
   }
 
   @Override
@@ -24,10 +28,16 @@ public class SimpleConnectionMonitor extends AbstractConnectionMonitor implement
 	return "simple";
   }
 
-  public void setConnectionStatus(final SimpleStatus status)
+  private class SimpleConnectionObserver implements Observer
   {
-	((SimpleConnection) getConnection()).setStatus(status);
-	fireConnectionStatusChanged(status);
+
+	@Override
+	public void update(final Observable o, final Object arg)
+	{
+	  final Status status = (Status) arg;
+	  fireConnectionStatusChanged(status);
+	}
+
   }
 
 }

@@ -24,4 +24,24 @@ public class SimpleConnnectionTest
 	Assert.assertEquals(SimpleStatus.connected, connection.getStatus());
   }
 
+  @Test
+  public void nullAsInitStatus()
+  {
+	new SimpleConnection("dummy", null);
+  }
+
+  @Test
+  public void statusChanges()
+  {
+	final SimpleConnection c = new SimpleConnection("nullable", null);
+	c.setStatus(SimpleStatus.connected);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void statusChangesToNull()
+  {
+	final SimpleConnection c = new SimpleConnection("nullable", SimpleStatus.disconnected);
+	c.setStatus(null);
+  }
+
 }

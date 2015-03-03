@@ -7,7 +7,7 @@
  */
 package com.baxter.connection.monitor.simple;
 
-import java.io.Serializable;
+import java.util.Observable;
 
 import com.baxter.connection.monitor.Connection;
 
@@ -16,11 +16,10 @@ import com.baxter.connection.monitor.Connection;
  * @author bela
  * @since 1.0
  */
-public class SimpleConnection implements Connection, Serializable
+public class SimpleConnection extends Observable implements Connection
 {
-  private static final long serialVersionUID = 1L;
-
   private final String name;
+
   private SimpleStatus status;
 
   public SimpleConnection(final String name, final SimpleStatus status)
@@ -43,13 +42,22 @@ public class SimpleConnection implements Connection, Serializable
 
   public void setStatus(final SimpleStatus status)
   {
-	this.status = status;
+	if (status == null)
+	{
+	  throw new IllegalArgumentException("Status cannot be null");
+	}
+	if (this.status == null || !this.status.equals(status))
+	{
+	  this.status = status;
+	  setChanged(); // we mark as really changed
+	  notifyObservers(status); // we notify observers and pass new status there 
+	}
   }
 
   @Override
   public String toString()
   {
-	return String.format("Connection %1$s is %2$s]", name, status);
+	return String.format("SimpleConnection %1$s is %2$s]", name, status);
   }
 
 }
