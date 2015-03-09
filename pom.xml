@@ -4,7 +4,7 @@
   <groupId>com.baxter.connection</groupId>
   <artifactId>connection-monitor</artifactId>
   <packaging>pom</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.3-SNAPSHOT</version>
 
   <name>Baxter Connection Monitor</name>
   <description>Connection Monitoring API and Abstract MBean Implementation</description>
