@@ -33,6 +33,18 @@ public class ConnectionMonitorName extends ObjectName
 	super(JMX_DOMAIN, new Hashtable<>(params));
   }
 
+  ObjectName toObjectName()
+  {
+	try
+	{
+	  return new ObjectName(getCanonicalName());
+	}
+	catch (final MalformedObjectNameException e)
+	{
+	  throw new IllegalStateException("The ObjectName cannot be constructed", e);
+	}
+  }
+
   /**
    * Constructs the connection monitor object name for specified monitor type and connection name.
    * @param monitorType

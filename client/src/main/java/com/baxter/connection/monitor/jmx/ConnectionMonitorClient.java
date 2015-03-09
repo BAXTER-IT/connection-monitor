@@ -39,7 +39,7 @@ public class ConnectionMonitorClient
    * @return MBeans of the connections.
    * @throws IOException
    */
-  public List<ConnectionMonitorMXBean> queryConnections() throws IOException
+  public List<ConnectionMonitorMXBean> getConnectionMonitors() throws IOException
   {
 	final List<ConnectionMonitorMXBean> connections = new ArrayList<>();
 	final MBeanServerConnection mbsc = jmxService.getJMXConnector().getMBeanServerConnection();
@@ -55,6 +55,20 @@ public class ConnectionMonitorClient
   }
 
   /**
+   * Returns the proxy for a single connection monitor specified by parameters.
+   * @param monitorType
+   * @param connectionName
+   * @return a proxy to MBean
+   * @throws IOException
+   */
+  public ConnectionMonitorMXBean getConnectionMonitor(final String monitorType, final String connectionName) throws IOException
+  {
+	final MBeanServerConnection mbsc = jmxService.getJMXConnector().getMBeanServerConnection();
+	final ConnectionMonitorName mbeanName = ConnectionMonitorName.getInstance(monitorType, connectionName);
+	return JMX.newMXBeanProxy(mbsc, mbeanName.toObjectName(), ConnectionMonitorMXBean.class, true);
+  }
+
+  /**
    * Adds a notification listener for specific monitor.
    * @param connectionName
    * @param listener
@@ -66,8 +80,8 @@ public class ConnectionMonitorClient
 	  throws IOException, MalformedObjectNameException, InstanceNotFoundException
   {
 	final MBeanServerConnection mbsc = jmxService.getJMXConnector().getMBeanServerConnection();
-	final ObjectName mbeanName = ConnectionMonitorName.getInstance(monitorType, connectionName);
-	mbsc.addNotificationListener(mbeanName, listener, null, null);
+	final ConnectionMonitorName mbeanName = ConnectionMonitorName.getInstance(monitorType, connectionName);
+	mbsc.addNotificationListener(mbeanName.toObjectName(), listener, null, null);
   }
 
   /**
