@@ -74,7 +74,7 @@ public class RemoteJMXService implements JMXService
 
   private void connect() throws IOException
   {
-	final JMXServiceURL url = new JMXServiceURL(String.format(JMXRMI_SERVICE_URL, host, port)); // TODO consider using the other constructor with 3 parameters
+	final JMXServiceURL url = new JMXServiceURL(String.format(JMXRMI_SERVICE_URL, host, port));
 	final Map<String, Object> env = new HashMap<String, Object>();
 	env.put("jmx.remote.x.client.connection.check.period", 1000);
 	connector = JMXConnectorFactory.connect(url, env);
